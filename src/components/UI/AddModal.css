@@ -1,0 +1,75 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.myModal {
+  position: fixed;
+  top: 20vh;
+  left: 35%;
+  width: 30%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 40rem;
+    left: calc(50% - 20rem);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* .modal .modal-dialog {
+  max-width: 400px;
+}
+.modal .modal-header,
+.modal .modal-body,
+.modal .modal-footer {
+  padding: 20px 30px;
+}
+.modal .modal-content {
+  border-radius: 3px;
+  font-size: 14px;
+}
+.modal .modal-footer {
+  background: #ecf0f1;
+  border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+  display: inline-block;
+}
+.modal .form-control {
+  border-radius: 2px;
+  box-shadow: none;
+  border-color: #dddddd;
+}
+.modal textarea.form-control {
+  resize: vertical;
+}
+.modal .btn {
+  border-radius: 2px;
+  min-width: 100px;
+}
+.modal form label {
+  font-weight: normal;
+} */
