@@ -1,7 +1,15 @@
-const DeleteModal = ({onCloseModal}) => {
+const DeleteModal = ({onCloseModal, removeUser, id, deleteChecked}) => {
+  const submitHandler = e => {
+    e.preventDefault();
+
+    removeUser(id);
+
+    onCloseModal();
+  };
+
   return (
     <div className='content'>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className='modal-header'>
           <h4 className='modal-title'>Delete Employee</h4>
           <button
@@ -27,7 +35,12 @@ const DeleteModal = ({onCloseModal}) => {
             data-dismiss='modal'
             value='Cancel'
           />
-          <input type='submit' className='btn btn-danger' value='Delete' />
+          <input
+            onClick={deleteChecked}
+            type='submit'
+            className='btn btn-danger'
+            value='Delete'
+          />
         </div>
       </form>
     </div>

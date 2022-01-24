@@ -1,31 +1,53 @@
 const TableItem = ({
+  id,
   name,
   email,
-  adress,
+  address,
   phone,
   onShowDeleteModal,
-  onShowAddModal,
+  onShowEditModal,
+  isChecked,
+  users,
+  setUsers,
 }) => {
+  const checkHandler = e => {
+    let value = e.target.checked;
+    setUsers(
+      users.map(user => {
+        if (user.id === id) {
+          user.isChecked = value;
+        }
+        return user;
+      })
+    );
+  };
   return (
     <tr>
       <td>
         <span className='custom-checkbox'>
-          <input type='checkbox' id='checkbox1' name='options[]' value='1' />
-          <label htmlFor='checkbox1'></label>
+          <input type='checkbox' checked={isChecked} onChange={checkHandler} />
         </span>
       </td>
       <td>{name}</td>
       <td>{email}</td>
-      <td>{adress}</td>
+      <td>{address}</td>
       <td>{phone}</td>
       <td>
-        <button onClick={onShowAddModal} className='edit'>
-          <i className='material-icons' data-toggle='tooltip' title='Edit'>
+        <button
+          onClick={() => {
+            onShowEditModal(id);
+          }}
+          className='edit'>
+          <i className='material-icons' title='Edit'>
             &#xE254;
           </i>
         </button>
-        <button onClick={onShowDeleteModal} className='delete'>
-          <i className='material-icons' data-toggle='tooltip' title='Delete'>
+        <button
+          onClick={() => {
+            onShowDeleteModal(id);
+          }}
+          className='delete'>
+          <i className='material-icons' title='Delete'>
             &#xE872;
           </i>
         </button>

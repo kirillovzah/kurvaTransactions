@@ -5,6 +5,7 @@ export const DUMMY_DATA = [
     email: 'thomashardy@mail.com',
     adress: '89 Chiaroscuro Rd, Portland, USA',
     phone: '(171) 555-2222',
+    isChecked: false,
   },
   {
     id: 'u2',
@@ -12,5 +13,6 @@ export const DUMMY_DATA = [
     email: 'zaherskiy@mail.ru',
     adress: 'Dick St. apt. 228',
     phone: '13371488228',
+    isChecked: false,
   },
 ];

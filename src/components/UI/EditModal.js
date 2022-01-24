@@ -1,12 +1,12 @@
 import {useState} from 'react';
 
-const AddModal = ({onCloseModal, onSubmit}) => {
-  const [nameInput, setNameInput] = useState('');
-  const [emailInput, setEmailInput] = useState('');
-  const [adressInput, setAdressInput] = useState('');
-  const [phoneInput, setPhoneInput] = useState('');
+const EditModal = ({onCloseModal, onSubmit, id, users}) => {
+  const currUser = users.find(user => user.id === id);
 
-  //31:22
+  const [nameInput, setNameInput] = useState(currUser.name);
+  const [emailInput, setEmailInput] = useState(currUser.email);
+  const [adressInput, setAdressInput] = useState(currUser.adress);
+  const [phoneInput, setPhoneInput] = useState(currUser.phone);
 
   const handleNameChange = e => {
     setNameInput(e.target.value);
@@ -27,7 +27,7 @@ const AddModal = ({onCloseModal, onSubmit}) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    onSubmit({
+    onSubmit(id, {
       id: Math.random().toString(),
       name: nameInput,
       email: emailInput,
@@ -59,7 +59,6 @@ const AddModal = ({onCloseModal, onSubmit}) => {
               value={nameInput}
               type='text'
               className='form-control'
-              required
               onChange={handleNameChange}
             />
           </div>
@@ -69,7 +68,6 @@ const AddModal = ({onCloseModal, onSubmit}) => {
               value={emailInput}
               type='email'
               className='form-control'
-              required
               onChange={handleEmailChange}
             />
           </div>
@@ -78,7 +76,6 @@ const AddModal = ({onCloseModal, onSubmit}) => {
             <textarea
               value={adressInput}
               className='form-control'
-              required
               onChange={handleAdressChange}></textarea>
           </div>
           <div className='form-group'>
@@ -87,7 +84,6 @@ const AddModal = ({onCloseModal, onSubmit}) => {
               value={phoneInput}
               type='text'
               className='form-control'
-              required
               onChange={handlePhoneChange}
             />
           </div>
@@ -99,11 +95,11 @@ const AddModal = ({onCloseModal, onSubmit}) => {
             className='btn btn-default'
             value='Cancel'
           />
-          <input type='submit' className='btn btn-success' value='Add' />
+          <input type='submit' className='btn btn-info' value='Save' />
         </div>
       </form>
     </div>
   );
 };
 
-export default AddModal;
+export default EditModal;
